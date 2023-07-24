@@ -13,10 +13,12 @@
  * It matches the specifier character with the
  * appropriate handler function and calls that
  * function to process the argument.
- * The supported format specifiers and their corresponding handler functions are:
+ * The supported format specifiers and their
+ * corresponding handler functions are:
  *   - 'c': char_s - Print a character from va_list to standard output.
  *   - 's': str_s - Print a string from va_list to standard output.
- *   - 'i' or 'd': int_s - Convert and print an integer from va_list to standard output.
+ *   - 'i' or 'd': int_s - Convert and print an integer from va_list
+ *                 to standard output.
  *   - '%': Print a '%' character to standard output.
  *
  * Return: The number of characters printed for the corresponding specifier,
