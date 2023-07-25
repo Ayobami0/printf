@@ -26,13 +26,12 @@
  */
 int _printf(const char *format, ...)
 {
-	int str_count, i;
+	int str_count, i, handler_return;
 	va_list ap;
 
 	if (format == NULL)
 	{
-		write_to_stdout("(null)", 6);
-		return (0);
+		return (-1);
 	}
 	va_start(ap, format);
 
@@ -42,7 +41,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			/*If a format specifier is found run the handler*/
-			str_count += handleSpecifier(format + i + 1, ap);
+			handler_return = handleSpecifier(format + i + 1, ap);
+			if (handler_return < 0)
+				return (-1);
+			str_count += handler_return;
 			i = i + 1;
 		}
 		else

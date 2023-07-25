@@ -45,7 +45,7 @@ int handleSpecifier(const char *specifier, va_list ap)
 		case 'i':
 			return (specifiers[2].s_handler(ap));
 		default:
-			return (0);
+			return (-1);
 	}
 }
 /**
@@ -86,7 +86,7 @@ int str_s(va_list ap)
 
 	str = va_arg(ap, char*);
 	if (str == NULL)
-		write_to_stdout("(null)", 6);
+		return (-1);
 	len = _strlen(str);
 	write_to_stdout(str, len);
 
@@ -116,7 +116,7 @@ int int_s(va_list ap)
 		is_negative = 1;
 	int_buf = malloc(num_len(int_val) + 1 + is_negative);
 	if (int_buf == NULL)
-		return (0);
+		return (-1);
 	itoa(int_val, int_buf);
 	len = _strlen(int_buf);
 	write_to_stdout(int_buf, len);
