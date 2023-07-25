@@ -48,17 +48,12 @@ char *cast_percent(va_list pc)
 	return (p);
 }
 
-/**
- * cast_int - convert int to string
- * @na: decimal argument
- * Return: string
- */
 char *cast_int(va_list na)
 {
 	char int_buf[32];
 	int num;
-
 	num = va_arg(na, int);
-
+	printf("%d\n", num);
+	
 	return (_parse_num(num, int_buf));
 }
