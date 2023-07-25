@@ -1,25 +1,26 @@
-#ifndef MAIN_H_
-#define MAIN_H_
-
-#include <stdarg.h>
+#ifndef MAIN_H
+#define MAIN_H
 #include <unistd.h>
-
-#define BUFFSIZE 1024
-
-typedef struct {
-	char specifier;
-	int (*s_handler)(va_list ap, char *str_buf, unsigned int *buf_idx);
-} sp_h;
-
-int num_len(int n);
-void itoa(int n, char *str_rep);
-int _strlen(const char *str);
-int handleSpecifier(const char *specifier, va_list ap, char *str_buf, unsigned int *buf_idx);
-void write_to_stdout(const char *buf, int size);
+#include <stdarg.h>
 int _printf(const char *format, ...);
-int char_s(va_list ap, char *str_buf, unsigned int *buf_idx);
-int str_s(va_list ap, char *str_buf, unsigned int *buf_idx);
-int int_s(va_list ap, char *str_buf, unsigned int *buf_idx);
-int percent_s(va_list __attribute__((__unused__))ap, char *str_buf, unsigned int *buf_idx);
-int float_s(va_list ap, char *str_buf, unsigned int *buf_idx);
-#endif /* MAIN_H_ */
+char *cast_char(va_list);
+char *cast_string(va_list);
+char *cast_percent(va_list);
+void _output(char *str, int str_len);
+int _len(char *str);
+char *cast_cs(char c);
+char *_memcpy(char *dest, char *src, unsigned int n);
+char *_not(char t);
+char *_strcat(char *dest, char *src);
+void _parse(va_list vp, char y, char *p_str, char *p);
+/**
+ * struct format_specifier_and_func - hold the type and function
+ * @_type: specifier type
+ * @f: function to return the string equivalent of the type
+ */
+typedef struct format_specifier_and_func
+{
+	char _type;
+	char *(*f)(va_list);
+} s_f;
+#endif
