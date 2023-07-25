@@ -1,0 +1,17 @@
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+     _printf("Let's try to printf %s simple sentence.\n", "BALL");
+     _printf("Let's try to printf %s simple %c sentence.\n", "BALL", 'A');
+     _printf("Let's try to printf %s%s simple sentence.\n", "BALL", " SHOE");     
+     _printf("%s%%c\n", "BAD", 'M');
+     return (0);
+}
