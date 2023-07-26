@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
 *	_parse_num - converts an int number to string
@@ -27,6 +28,80 @@ char *_parse_num(int n, char *num_buf)
 	}
 	if (is_negative)
 		num_buf[i++] = '-';
+	num_buf[i] = '\0';
+
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = num_buf[j];
+		num_buf[j] = num_buf[i - j - 1];
+		num_buf[i - j - 1] = temp;
+	}
+
+	return (num_buf);
+}
+
+char *_parse_uint(unsigned int n, char *num_buf)
+{
+	int i, j;
+	char temp;
+
+	i = 0;
+	while (n > 0)
+	{
+		num_buf[i++] = '0' + (n % 10);
+		n /= 10;
+	}
+	num_buf[i] = '\0';
+
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = num_buf[j];
+		num_buf[j] = num_buf[i - j - 1];
+		num_buf[i - j - 1] = temp;
+	}
+
+	return (num_buf);
+}
+
+char *_parse_uoct(unsigned int n, char *num_buf)
+{
+	int i, j;
+	char temp;
+
+	i = 0;
+	while (n > 0)
+	{
+		num_buf[i++] = '0' + (n % 8);
+		n /= 8;
+	}
+	num_buf[i] = '\0';
+
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = num_buf[j];
+		num_buf[j] = num_buf[i - j - 1];
+		num_buf[i - j - 1] = temp;
+	}
+
+	return (num_buf);
+}
+char *_parse_uhex(unsigned int n, char *num_buf, int hex_type)
+{
+	int i, j, _hex;
+	char temp;
+
+	_hex = 65;
+	if (hex_type != 0)
+		_hex = 97;
+	i = 0;
+	while (n > 0)
+	{
+		/*A = 65 B C D E F*/
+		num_buf[i++] = (n % 16) < 10
+			? '0' + (n % 16)
+			: ((n % 16) - 10) + _hex;
+		n /= 16;
+	}
 	num_buf[i] = '\0';
 
 	for (j = 0; j < i / 2; j++)

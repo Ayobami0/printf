@@ -6,8 +6,10 @@ int main(void)
 
     int len;
     int len2;
-		char *str;
+    unsigned int ui;
+    char *str;
 
+    ui = 2147484671;
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
     _printf("Length:[%d, %i]\n", len, len);
@@ -39,9 +41,11 @@ int main(void)
     len2 = printf(NULL);
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
-    len = _printf("%c", '\0');
-    len2 = printf("%c", '\0');
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     return (0);
 }
