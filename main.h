@@ -15,7 +15,7 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 char *_not(char t);
 char *_strcat(char *dest, char *src);
 void _parse(va_list vp, char y, char *p_str, char *p);
-char *_parse_num(int n, char* num_buf);
+char *_parse_num(int n, char *num_buf);
 /**
  * struct format_specifier_and_func - hold the type and function
  * @_type: specifier type
