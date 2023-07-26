@@ -10,6 +10,8 @@ char *cast_char(va_list c)
 	char str[2];
 	char *p;
 
+	if (!va_arg(c, int))
+		return (NULL);
 	p = str;
 	*p = va_arg(c, int);
 	*(p + 1) = '\0';
@@ -27,7 +29,7 @@ char *cast_string(va_list str)
 	char *p = va_arg(str, char *);
 
 	if (p == NULL)
-		return ("nil");
+		return (NULL);
 	return (p);
 }
 
@@ -59,6 +61,7 @@ char *cast_int(va_list na)
 	int num;
 
 	num = va_arg(na, int);
-
+	if (!num)
+	return (NULL);
 	return (_parse_num(num, int_buf));
 }
