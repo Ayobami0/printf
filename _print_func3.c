@@ -1,40 +1,45 @@
 #include "main.h"
-#include <stdarg.h>
-
-char *cast_uint(va_list ui)
+/**
+ * cast_binary - convert unsigned int to binary and to string
+ * @b: integer to be converted
+ * Return: a string
+*/
+char *cast_binary(va_list b)
 {
-	unsigned int num;
-	char buffer[32];
+	char buf_bin[32];
+	unsigned int n, i;
+	char *str;
 
-	num = va_arg(ui, unsigned int);
-
-	return (_parse_uint(num, buffer));
+	str = buf_bin;
+	i = 0;
+	n = va_arg(b, unsigned int);
+	if (n == 0)
+		buf_bin[i] = '0';
+	for (i = 0; n > 0; i++)
+	{
+		buf_bin[i] = (n % 2) + '0';
+		n /= 2;
+	}
+	buf_bin[i] = '\0';
+	rev_string(str, i);
+	return (str);
 }
 
-char *cast_uoct(va_list ui)
+/**
+ * rev_string - string is reverse
+ * @s: char type pointer
+ * @len: length of the string
+ * Return: nothing
+ */
+void rev_string(char *s, int len)
 {
-	unsigned int num;
-	char buffer[32];
+	int j;
+	char temp;
 
-	num = va_arg(ui, unsigned int);
-
-	return (_parse_uoct(num, buffer));
-}
-char *cast_uhex(va_list ui)
-{
-	unsigned int num;
-	char buffer[32];
-
-	num = va_arg(ui, unsigned int);
-
-	return (_parse_uhex(num, buffer, 1));
-}
-char *cast_uHex(va_list ui)
-{
-	unsigned int num;
-	char buffer[32];
-
-	num = va_arg(ui, unsigned int);
-
-	return (_parse_uhex(num, buffer, 0));
+	for (j = 0; j < (len / 2); j++)
+	{
+		temp = s[j];
+		s[j] = s[len - j - 1];
+		s[len - j - 1] = temp;
+	}
 }
