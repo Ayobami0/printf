@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 #include <stdio.h>
 /**
  * _printf -  produces output according to a format.
@@ -17,11 +18,13 @@ int _printf(const char *format, ...)
 	p_str = buf;
 	len_str = j = total_len = 0;
 	va_start(vp, format);
+	if (!format)
+		return (-1);
 	while (format[j] && format)
 	{
+		/*Handle cases of buffer overflow*/
 		if (_len(p_str) >= BUFFER)
 		{
-			printf("BUFFER EXCEEDED");
 			_output(p_str, BUFFER);
 			total_len += _len(buf) + 1;
 			buf[0] = '\0';
@@ -30,6 +33,8 @@ int _printf(const char *format, ...)
 		if (format[j] == '%')
 		{
 			j++;
+			if (!format[j])
+				return (-1);
 			_parse(vp, format[j], p_str, p);
 		}
 		else
@@ -71,7 +76,7 @@ void _parse(va_list vp, char y, char *p_str, char *p)
 			break;
 		}
 	}
-	if (!p)
+	if (!spec[k]._type)
 		p = _not(y);
 	_strcat(p_str, p);
 }

@@ -12,6 +12,8 @@ char *cast_char(va_list c)
 
 	p = str;
 	*p = va_arg(c, int);
+	if (*p == '\0')
+		*p = ' ';
 	*(p + 1) = '\0';
 	return (p);
 }
