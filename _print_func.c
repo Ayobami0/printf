@@ -9,7 +9,7 @@ char *cast_char(va_list c)
 {
 	char str[2];
 	char *p;
-	
+
 	p = str;
 	*p = va_arg(c, int);
 	*(p + 1) = '\0';

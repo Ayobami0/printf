@@ -6,23 +6,23 @@
 */
 char *cast_binary(va_list b)
 {
-    char buf_bin[32];
-    unsigned n, i;
-    char *str;
+	char buf_bin[32];
+	unsigned int n, i;
+	char *str;
 
-    str = buf_bin;
-    i = 0;
-    n = va_arg(b, unsigned int);
-    if (n == 0)
-        buf_bin[i] = '0';
-    for ( i = 0; n > 0; i++)
-    {
-        buf_bin[i] = (n % 2) + '0';
-        n /= 2;
-    }
-    buf_bin[i] = '\0';
-    rev_string(str, i);
-    return (str);
+	str = buf_bin;
+	i = 0;
+	n = va_arg(b, unsigned int);
+	if (n == 0)
+		buf_bin[i] = '0';
+	for (i = 0; n > 0; i++)
+	{
+		buf_bin[i] = (n % 2) + '0';
+		n /= 2;
+	}
+	buf_bin[i] = '\0';
+	rev_string(str, i);
+	return (str);
 }
 
 /**
