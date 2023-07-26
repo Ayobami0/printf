@@ -13,6 +13,8 @@ int _printf(const char *format, ...)
 	int len_str, j;
 	char buf[1025] = "";
 
+	if (format == NULL)
+		return (1);
 	p_str = buf;
 	len_str = j = 0;
 	va_start(vp, format);
