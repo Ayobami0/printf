@@ -9,16 +9,11 @@ char *cast_char(va_list c)
 {
 	char str[2];
 	char *p;
-	char cs;
-
-	cs = va_arg(c, int);
-	if (cs)
-	{
-		p = str;
-		*p = va_arg(c, int);
-		*(p + 1) = '\0';
-		return (p);
-	}
+	
+	p = str;
+	*p = va_arg(c, int);
+	*(p + 1) = '\0';
+	return (p);
 }
 
 /**
@@ -32,7 +27,7 @@ char *cast_string(va_list str)
 	char *p = va_arg(str, char *);
 
 	if (p == NULL)
-		return (NULL);
+		return ("(null)");
 	return (p);
 }
 
