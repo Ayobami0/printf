@@ -27,7 +27,7 @@ char *cast_string(va_list str)
 	char *p = va_arg(str, char *);
 
 	if (p == NULL)
-		return ("nil");
+		return ("(null)");
 	return (p);
 }
 
