@@ -67,6 +67,7 @@ void _parse(va_list vp, char y, char *p_str, char *p)
 	{'%', cast_percent},
 	{'i', cast_int},
 	{'d', cast_int},
+	{'b', cast_binary}
 	};
 	for (k = 0; spec[k]._type; k++)
 	{

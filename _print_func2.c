@@ -9,9 +9,8 @@
 */
 char *_parse_num(int n, char *num_buf)
 {
-	int is_negative, i, j;
-	char temp;
-
+	int is_negative, i;
+	
 	is_negative = 0;
 	if (n < 0)
 	{
@@ -29,12 +28,6 @@ char *_parse_num(int n, char *num_buf)
 		num_buf[i++] = '-';
 	num_buf[i] = '\0';
 
-	for (j = 0; j < i / 2; j++)
-	{
-		temp = num_buf[j];
-		num_buf[j] = num_buf[i - j - 1];
-		num_buf[i - j - 1] = temp;
-	}
-
+	rev_string(num_buf, i);
 	return (num_buf);
 }
