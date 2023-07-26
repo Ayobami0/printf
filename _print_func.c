@@ -9,13 +9,16 @@ char *cast_char(va_list c)
 {
 	char str[2];
 	char *p;
+	char cs;
 
-	if (!va_arg(c, int))
-		return (NULL);
-	p = str;
-	*p = va_arg(c, int);
-	*(p + 1) = '\0';
-	return (p);
+	cs = va_arg(c, int);
+	if (cs)
+	{
+		p = str;
+		*p = va_arg(c, int);
+		*(p + 1) = '\0';
+		return (p);
+	}
 }
 
 /**
