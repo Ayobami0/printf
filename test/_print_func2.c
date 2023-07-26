@@ -62,8 +62,7 @@ char *_parse_uint(unsigned int n, char *num_buf)
  */
 char *_parse_uoct(unsigned int n, char *num_buf)
 {
-	int i, j;
-	char temp;
+	int i;
 
 	i = 0;
 	while (n > 0)
@@ -90,8 +89,7 @@ char *_parse_uoct(unsigned int n, char *num_buf)
  */
 char *_parse_uhex(unsigned int n, char *num_buf, int hex_type)
 {
-	int i, j, _hex;
-	char temp;
+	int i, _hex;
 
 	_hex = 65;
 	if (hex_type != 0)
