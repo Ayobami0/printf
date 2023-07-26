@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	char *p_str;
 	char *p;
 	int len_str, j;
-	char buf[1025] = "";
+	char buf[BUFFER] = "";
 
 	if (format == NULL)
 		return (1);
