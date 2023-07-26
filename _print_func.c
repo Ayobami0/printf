@@ -62,6 +62,6 @@ char *cast_int(va_list na)
 
 	num = va_arg(na, int);
 	if (!num)
-	return (NULL);
+		return (NULL);
 	return (_parse_num(num, int_buf));
 }
