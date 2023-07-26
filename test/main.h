@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <unistd.h>
 #include <stdarg.h>
+#define BUFFER 1024
 int _printf(const char *format, ...);
 char *cast_char(va_list);
 char *cast_string(va_list);

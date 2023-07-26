@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * _printf -  produces output according to a format.
  * @format: charcter to be printed
@@ -10,14 +11,22 @@ int _printf(const char *format, ...)
 	va_list vp;
 	char *p_str;
 	char *p;
-	int len_str, j;
-	char buf[1025] = "";
+	int len_str, j, total_len;
+	char buf[BUFFER] = "";
 
 	p_str = buf;
-	len_str = j = 0;
+	len_str = j = total_len = 0;
 	va_start(vp, format);
 	while (format[j] && format)
 	{
+		if (_len(p_str) >= BUFFER)
+		{
+			printf("BUFFER EXCEEDED");
+			_output(p_str, BUFFER);
+			total_len += _len(buf) + 1;
+			buf[0] = '\0';
+		}
+
 		if (format[j] == '%')
 		{
 			j++;
@@ -32,8 +41,9 @@ int _printf(const char *format, ...)
 	}
 	va_end(vp);
 	len_str = _len(p_str);
+	total_len += len_str;
 	_output(p_str, len_str);
-	return (len_str);
+	return (total_len);
 }
 
 /**
