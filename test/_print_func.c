@@ -9,11 +9,9 @@ char *cast_char(va_list c)
 {
 	char str[2];
 	char *p;
-
+	
 	p = str;
 	*p = va_arg(c, int);
-	if (*p == '\0')
-		*p = ' ';
 	*(p + 1) = '\0';
 	return (p);
 }
@@ -61,6 +59,7 @@ char *cast_int(va_list na)
 	int num;
 
 	num = va_arg(na, int);
-
+	if (!num)
+		return (NULL);
 	return (_parse_num(num, int_buf));
 }
