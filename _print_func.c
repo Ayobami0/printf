@@ -63,3 +63,15 @@ char *cast_int(va_list na)
 		return (NULL);
 	return (_parse_num(num, int_buf));
 }
+char *cast_rev_str(va_list s)
+{
+	char *p;
+	int i;
+
+	p = va_arg(s, char *);
+	if (!p)
+	return (NULL);
+	i = _len(p);
+	rev_string(p, i);
+	return (p);
+}

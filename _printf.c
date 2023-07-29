@@ -71,7 +71,8 @@ void _parse(va_list vp, char y, char *p_str, char *p)
 	{'X', cast_uHex},
 	{'o', cast_uoct},
 	{'u', cast_uint},
-	{'b', cast_binary}
+	{'b', cast_binary},
+	{'r', cast_rev_str}
 	};
 	for (k = 0; spec[k]._type; k++)
 	{
